@@ -1,0 +1,29 @@
+{% extends 'tango/base.html' %}
+{% block title_block %}
+   Add Page
+{% endblock %}
+{% block body_block %}
+    <div>
+        <form action="{% url 'add_page' %}" method="post">
+            {% csrf_token  %}
+            {% for hidden in form.hidden_fields  %}
+                {{ hidden }}
+            {% endfor %}
+            {% for visible in form.visible_fields %}
+                {{ visible.errors }}
+                {{ visible.help_text }}
+                {{ visible }}
+            {% endfor %}
+{#            <select name="category">#}
+{#                {% for ct in category %}#}
+{#                   <option name="{{ ct.name }}" value="{{ ct.id }}"> {{ ct.name }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+
+            <input type="submit" name="提交" value="CreatePage"/>
+        </form>
+
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'tango/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+   欢迎光临
+{% endblock %}
+
+ {% block body_block %}
+     <h1>Tango says...</h1>
+     <div>
+        <ul>
+
+            {% if  user.is_authenticated %}
+                    <li>hello {{ user.username }} </li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{%url 'login' %}">To Login</a></li>
+                {% endif %}
+
+
+
+
+
+
+        </ul>
+
+
+        
+     </div>
+     
+     <div>
+        <p>Most Liked Category</p>
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                    <li><a href="{%url 'show_category' category.id %}">{{ category.name }}</a>({{ category.likes }})</li>
+                {%endfor %}
+            </ul>
+        {% else %}
+            <strong>there is no categories present.</strong>
+        {% endif %}
+     </div>
+    <div>
+        <p>Most Viewed Page</p>
+        {% if pages %}
+            <ul>
+                {% for page in pages %}
+                    <li><a href = "{% url 'show_page' page.id %}">{{ page.title }}</a>({{ page.views }})</li>
+                {%endfor %}
+            </ul>
+        {% else %}
+            <strong>there is no categories present.</strong>
+        {% endif %}
+     </div>
+
+     <div>
+        <img src="{%static  'tango/images/dog.jpg' %}" alt="this is static file">
+        <img src="{{ MEDIA_URL }}profile_images/dog.jpg"  alt="this is a media file">
+    </div>
+
+ {% endblock %}
+

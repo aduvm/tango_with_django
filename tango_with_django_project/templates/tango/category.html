@@ -1,0 +1,20 @@
+{% extends 'tango/base.html' %}
+{% block title_block %}
+  {{ category.name }}
+{% endblock %}
+{% block body_block %}
+    <div>
+         {% if category %}
+            <h1>{{ category.name }}</h1>
+         {% endif %}
+    </div>
+    <div>
+         {% if pages %}
+             <ul>
+                {% for page in pages %}
+                    <li>{{ page.title }}</li>
+                {% endfor %}
+             </ul>
+         {% endif %}
+    </div>
+{% endblock %}

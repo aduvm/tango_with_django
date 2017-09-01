@@ -1,0 +1,13 @@
+{% extends 'tango/base.html' %}
+{% block title_block %}
+    {{ page.category.name }}
+{% endblock %}
+{% block body_block %}
+    <div>
+        <p>Category {{ page.category.name }}</p>
+        <p>Title {{ page.title }}</p>
+        <p><a href ="{{ page.url }}">{{ page.url }}</a></p>
+        <p>views({{ page.views }})</p>
+
+    </div>
+{% endblock %}
