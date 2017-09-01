@@ -50,6 +50,13 @@
              <li><a href="{% url 'about' %}">About</a></li>
              <li><a href="{% url 'register' %}">Sign Up</a></li>
              <li><a href="{% url 'login' %}">Login</a></li>
+
+         </ul>
+         <p>下面是registration </p>
+         <ul>
+             <li><a href="{% url 'registration_register' %}">registration_register</a></li>
+             <li><a href="{% url 'auth_login' %}">auth_login</a></li>
+             <li><a href="{% url 'auth_logout'%}?next={% url 'index' %}">auth_logout</a></li>
          </ul>
 
      </div>

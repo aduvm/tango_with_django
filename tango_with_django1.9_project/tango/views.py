@@ -29,7 +29,7 @@ def visitor_cookie_handler(request,response):
     str_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(type(str_time))
     last_visit_cookie = request.COOKIES.get('last_visit',str_time)
-    last_visit_time = datetime.strptime(last_visit_cookie,'%Y-%m-%d %H:%M:%S')
+    # last_visit_time = datetime.strptime(last_visit_cookie,'%Y-%m-%d %H:%M:%S')
     # if last_visit_time -  datetime.now()> 0:
     #     visits = visits +1
     #     response.set_cookie('last_visit',str_time)

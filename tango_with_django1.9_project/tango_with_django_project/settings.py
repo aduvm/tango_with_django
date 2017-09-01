@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tango',
+    'registration',#添加django-registration-redux 包
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,10 @@ STATICFILES_DIRS = [
 ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+#Session分两种:一种是浏览器关闭后失效，一种是持久的
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False #False Session是持久的，True浏览器关闭Session就失效
+SESSION_COOKIE_AGE = 1209600 #14天后过期，单位秒   持久的 可以设置此参数
 
 STATIC_URL = '/static/'
 
@@ -130,6 +135,28 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 #没有登陆 要跳转的url
 LOGIN_URL = '/tango/login'
+
+
+# if True, users can register
+REGISTRATION_OPEN = True
+# One-weeuse a different value.k activation window; you may, of course,
+ACCOUNT_ACTIVATION_DAYS = 7
+# If True, the user will be automatically logged in.
+REGISTRATION_AUTO_LOGIN = True
+# The page you want users to arrive at after they successfully log in
+LOGIN_REDIRECT_URL = '/rango/'
+# The page users are directed to if they are not logged in,
+# and are trying to access pages requiring authentication
+LOGIN_URL = '/accounts/login/'
+
+
+'''
+django registration-redux 文档
+https://django-registration-redux.readthedocs.org/en/latest/quickstart.html  
+-------------------------------------------------
+registration-redux demo告诉我们怎么编码
+https://github.com/macdhuibh/django-registration-templates
+'''
 
 
 

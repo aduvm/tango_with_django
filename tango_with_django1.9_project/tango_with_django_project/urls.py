@@ -19,9 +19,18 @@ from django.contrib import admin
 
 from tango import views
 from tango_with_django_project import settings
+from registration.backends.simple.views import RegistrationView
+# Create a new class that redirects the user to the index page,
+#if successful at logging
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return '/tango/'
+
 urlpatterns = [
     url(r'^$',views.index,name = 'index'),
     url(r'^admin/', admin.site.urls),
     url(r'^tango/', include('tango.urls')),
+    url(r'^accounts/register/$',MyRegistrationView.as_view(),name='registration_register'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

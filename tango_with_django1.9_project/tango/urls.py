@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from tango import views
 urlpatterns = [
+    url(r'^$', views.index),
     url(r'^about/$',views.about,name='about'),
     url(r'^category/(?P<category_id>\d+)/$',views.show_category,name='show_category'),
     url(r'^page/(?P<page_id>\d+)/$',views.show_page,name='show_page'),
