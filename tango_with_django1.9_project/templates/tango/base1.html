@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load template_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title_block %}
+            Tango With Django
+        {% endblock %}
+
+    </title>
+     <script  src="{% static 'jquery/jquery-migrate-3.0.0.js' %}"></script>
+     <script  src = "{% static 'bootstrap-3.3.7-dist/js/bootstrap.js'  %}"></script>
+     <script  src = "{% static 'bootstrap-3.3.7-dist/js/npm.js' %}"></script>
+     <link href="{%static 'bootstrap-3.3.7-dist/css/bootstrap.css' %}"  rel = "stylesheet" type="text/css"/>
+     <link href="{%static 'bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}" rel = "stylesheet" type="text/css"/>
+
+
+
+</head>
+<body>
+    {% block body_block %}
+    {% endblock %}
+    <hr>
+
+    <div>
+        {% get_category_list %}
+    </div>
+    <div>
+            {% get_category_list2 as dd %}
+            {% if  dd%}
+                <ul>
+                    {% for category in  dd %}
+                        <li><a href="{% url 'show_category' category.id%}">{{ category.name }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            {% else %}
+                <strong>no categories</strong>
+            {% endif %}
+
+    </div>
+
+     <div>
+         <ul>
+             <li><a href="{% url 'add_category' %}">Add New Category</a></li>
+             <li><a href="{% url 'add_page' %}">Add New Page</a></li>
+             <li><a href="{% url 'index' %}">Index</a></li>
+             <li><a href="{% url 'about' %}">About</a></li>
+             <li><a href="{% url 'register' %}">Sign Up</a></li>
+             <li><a href="{% url 'login' %}">Login</a></li>
+
+         </ul>
+         <p>下面是registration </p>
+         <ul>
+             <li><a href="{% url 'registration_register' %}">registration_register</a></li>
+             <li><a href="{% url 'auth_login' %}">auth_login</a></li>
+             <li><a href="{% url 'auth_logout'%}?next={% url 'index' %}">auth_logout</a></li>
+         </ul>
+
+     </div>
+
+</body>
+</html>

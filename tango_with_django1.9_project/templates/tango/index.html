@@ -1,61 +1,55 @@
 {% extends 'tango/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-   欢迎光临
+    欢迎光临
 {% endblock %}
 
- {% block body_block %}
-     <h1>Tango says...</h1>
-     <div>
-        <ul>
+{% block body_block %}
+    <div class="jumbotron">>
+        <h1 class="display-3">Rango says...</h1>
+    </div>
+    <div class="row marketing">
 
-            {% if  user.is_authenticated %}
-                    <li>hello {{ user.username }} </li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+
+        <div class="col-lg-6">
+            <h4>Most Liked Category</h4>
+            <p>
+                {% if categories %}
+                    <ul>
+                        {% for category in categories %}
+                            <li>
+                                <a href="{% url 'show_category' category.id %}">{{ category.name }}</a>({{ category.likes }})
+                            </li>
+                        {% endfor %}
+                    </ul>
                 {% else %}
-                    <li><a href="{%url 'login' %}">To Login</a></li>
+                    <strong>there is no categories present.</strong>
                 {% endif %}
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <h4>Most Viewed Page</h4>
+            <p>
+                {% if pages %}
+                    <ul>
+                        {% for page in pages %}
+                            <li><a href="{% url 'show_page' page.id %}">{{ page.title }}</a>({{ page.views }})</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>there is no categories present.</strong>
+                {% endif %}
+            </p>
+        </div>
 
 
-
-
-
-
-        </ul>
-
-
-        
-     </div>
-     
-     <div>
-        <p>Most Liked Category</p>
-        {% if categories %}
-            <ul>
-                {% for category in categories %}
-                    <li><a href="{%url 'show_category' category.id %}">{{ category.name }}</a>({{ category.likes }})</li>
-                {%endfor %}
-            </ul>
-        {% else %}
-            <strong>there is no categories present.</strong>
-        {% endif %}
-     </div>
-    <div>
-        <p>Most Viewed Page</p>
-        {% if pages %}
-            <ul>
-                {% for page in pages %}
-                    <li><a href = "{% url 'show_page' page.id %}">{{ page.title }}</a>({{ page.views }})</li>
-                {%endfor %}
-            </ul>
-        {% else %}
-            <strong>there is no categories present.</strong>
-        {% endif %}
-     </div>
-
-     <div>
-        <img src="{%static  'tango/images/dog.jpg' %}" alt="this is static file">
-        <img src="{{ MEDIA_URL }}profile_images/dog.jpg"  alt="this is a media file">
+    </div>
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <img src="{% static  'tango/images/dog.jpg' %}" alt="this is static file">
+            <img src="{{ MEDIA_URL }}profile_images/dog.jpg" alt="this is a media file">
+        </div>
     </div>
 
- {% endblock %}
+{% endblock %}
 
