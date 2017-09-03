@@ -1,0 +1,70 @@
+body{
+    font-family: "微软雅黑";
+}
+
+header{
+
+    height: 50px;
+    /*background-color: #2b542c;*/
+    line-height: 50px;
+    border: 2px solid #eeeeee;
+
+}
+.row>div + div{
+
+    border-left:2px solid #eeeeee;
+}
+/**
+row>div 选中div父元素row的最后一个子元素
+
+.row>div:last-child
+**/
+
+
+.row>div>a{
+    position:relative;
+
+}
+
+.row>div>a:hover{
+
+
+}
+.row>div>a:hover>img{
+
+    display:block;
+}
+
+.row>div>a>img{
+    background-color: #3c3c3c;
+    margin-left: -60px;
+    left:50%;
+    margin-top:5px;
+    position: absolute ;
+    display: none;
+
+
+}
+.row>div:nth-of-type(2n+1){
+    /*background-color: #2aabd2;*/
+    /*border-right:1px solid #eeeeee;*/
+}
+
+
+i{
+    font-style: normal;
+}
+
+
+section{
+    background-color: #2aabd2;
+    height: 300px;
+}
+section:nth-of-type(2n+1){
+     background-color: #ffffff;
+}
+
+footer{
+    background-color: #2b542c;
+    height: 100px;
+}
